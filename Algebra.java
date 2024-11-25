@@ -96,7 +96,10 @@ public class Algebra {
 		if (x2 == 0) {
 			return -1; 
 		}
-	
+		else if (x1<x2){
+			return 0;
+		}
+		else{
 		int count = 0; 
 		while (x1 >= x2) { 
 			x1 = minus(x1, x2);
@@ -105,6 +108,7 @@ public class Algebra {
 	
 		return count; 
 	}
+}
 	
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
