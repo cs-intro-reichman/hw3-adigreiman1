@@ -16,7 +16,7 @@ public class Algebra {
    		System.out.println(div(-12,3));   // 12 / 3    
    		System.out.println(div(5,5));    // 5 / 5  
    		System.out.println(div(25,7));   // 25 / 7
-   		System.out.println(mod(25,7));   // 25 % 7
+   		System.out.println(mod(25,-7));   // 25 % 7
    		System.out.println(mod(120,6));  // 120 % 6    
    		System.out.println(sqrt(36));
 		System.out.println(sqrt(263169));
@@ -165,14 +165,38 @@ public class Algebra {
 		if (x2 == 0) {
 			return -1;
 		}
-	
-		while (x1 >= x2) { 
-			x1 = minus(x1, x2);
+		else if (x1==0){
+			return 0;
+		}
+		else{
+			boolean isNegative = false;
 
+			if (x1 < 0 && x2 < 0) {
+				x1 = minus(0, x1); 
+				x2 = minus(0, x2);
+
+			} else if (x1 < 0 || x2 < 0) {
+				isNegative = true;
+				if (x1 < 0) {
+					x1 = minus(0, x1);
+				} else {
+					x2 = minus(0, x2);
+				}
+			}
+		
+			while (x1 >= x2) {
+				x1 = minus(x1, x2);
+			}
+		
+
+			if (isNegative == true) {
+			return minus(0, x1);
+		}
+			return x1;
 	}
-	return x1;
-}
 	
+}
+
 
 
 	// Returns the integer part of sqrt(x) 
