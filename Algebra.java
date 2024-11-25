@@ -45,7 +45,7 @@ public class Algebra {
 	
 		if (x2>0){
 			int difference = x1;
-		for (int i=0; i< x2 ; i++){
+			for (int i=0; i< x2 ; i++){
 			difference--;
 		}
 		return difference;
@@ -54,14 +54,12 @@ public class Algebra {
 			return x1;
 		}
 		else{
-			int difference = 0;
-			int run =1;
+			int run =0;
 			for (int i=0; i>x2 ; i--){
 				run++;
 				
-				x2 +=run;
 			}
-		difference = plus(x1, x2);
+		int difference = plus(x1, run);
 		return difference;
 		 }
 		 
@@ -111,12 +109,17 @@ public class Algebra {
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
 		
+		if (n==0){
+			return 1;
+		}
+		else{
 		int pow = 1;
 		for (int i=0; i< n ; i++){
 			pow = times(pow, x);
 		}
 		return pow;
 }
+	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
@@ -124,16 +127,16 @@ public class Algebra {
 			return -1; 
 		}
 		else if (x1<x2){
-			return 0;
+		return 0;
 		}
 		else{
-		int count = 0; 
-		while (x1 >= x2) { 
-			x1 = minus(x1, x2);
-			count++; 
-		}
-	
-		return count; 
+		//int count = 0; 
+		//while (x1 >= x2) { 
+		//	x1 = minus(x1, x2);
+		//	count++; 
+		//}
+	int div = times(x1, minus(0, x2));
+		return div; 
 	}
 }
 	
