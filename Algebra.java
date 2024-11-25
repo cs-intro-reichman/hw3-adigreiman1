@@ -31,7 +31,11 @@ public class Algebra {
 				for (int i = 0; i < x2; i++) {
 					result++;
 				}
-			} else {
+			}
+				else if (x2==0){
+					return x1;
+				}
+			 else {
 				for (int i = 0; i < -x2; i++) {
 					result--;
 				}
@@ -42,29 +46,25 @@ public class Algebra {
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
+		int min = x1;
 	
-		if (x2>0){
-			int difference = x1;
-			for (int i=0; i< x2 ; i++){
-			difference--;
-		}
-		return difference;
-		}
-		else if(x2==0){
-			return x1;
-		}
-		else{
-			int run =0;
-			for (int i=0; i>x2 ; i--){
-				run++;
-				
+		if (x2 > 0) {
+			for (int i = 0; i < x2; i++) {
+				min--; 
 			}
-		int difference = plus(x1, run);
-		return difference;
-		 }
-		 
-		 }
-		
+		} else if (x2 < 0) {
+			int absX2 = 0;
+			for (int i = 0; i > x2; i--) {
+				absX2++; 
+			}
+	
+			for (int i = 0; i < absX2; i++) {
+				min++; 
+			}
+			
+		}
+		return min;
+	}
 	
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
@@ -201,9 +201,11 @@ public class Algebra {
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
-		if (x <= 0) {
+		if (x < 0) {
 			return -1; 
-
+		}
+		else if(x == 0){
+			return 0;
 		}
 		else{
 			int guess = 0;
