@@ -26,83 +26,52 @@ public class Algebra {
 	// Returns x1 + x2
 
 		public static int plus(int x1, int x2) {
-			int result = x1;
-			if (x2 > 0) {
+
+			if (x2 >= 0) {
 				for (int i = 0; i < x2; i++) {
-					result++;
+					x1++;
+				}
+			} else {
+				for (int i = x2; i <0; i++) {
+					x1--;
 				}
 			}
-				else if (x2==0){
-					return x1;
-				}
-			 else {
-				for (int i = 0; i < -x2; i++) {
-					result--;
-				}
-			}
-			return result;
+			return x1;
 		}
 	
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
-		int min = x1;
-	
-		if (x2 > 0) {
+		if (x2 >= 0) {
 			for (int i = 0; i < x2; i++) {
-				min--; 
+				x1--; 
 			}
-		} else if (x2 < 0) {
-			int absX2 = 0;
-			for (int i = 0; i > x2; i--) {
-				absX2++; 
+		} else {
+			for (int i = x2; i <0; i++) {
+				x1++; 
 			}
-	
-			for (int i = 0; i < absX2; i++) {
-				min++; 
-			}
-			
 		}
-		return min;
+		return x1;
 	}
 	
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-		if (x1 <0 && x2<0){
-			x1 = minus(0, x1);
-			x2 = minus(0, x2);
+		int result = x1;
 
-			int difference = 0;
-		for (int i=0; i< x2 ; i++){
-			difference = plus(difference, x1);
+		if (x1==0 || x2==0){
+			return 0;
 		}
-		return difference;
-	}
-	else if (x1 <0 && x2>0 ){
-		x1 = minus(0, x1);
-		int difference = 0;
-		for (int i=0; i< x2 ; i++){
-			difference = plus(difference, x1);
-			difference = minus(0, difference);
+		else if (x1 >0 || x2>0){
+			for (int i=0; i< x2 ; i++){
+				result = plus(result, x1);
 		}
-		return difference;
-		
-	}
-	else if(x1 >0 && x2<0){
-		x2 = minus(0, x2);
-		int difference = 0;
-		for (int i=0; i< x2 ; i++){
-			difference = plus(difference, x1);
-			difference = minus(0, difference);
-		}
-		return difference;
+		return result;
 	}
 		else{
-			int difference = 0;
-		for (int i=0; i< x2 ; i++){
-			difference = plus(difference, x1);
+			for (int i = x2; i <1; i++) {
+				result = minus(result, x1);
 		}
-		return difference;
+		return result;
 	}
 }
 
@@ -112,51 +81,51 @@ public class Algebra {
 		if (n==0){
 			return 1;
 		}
-		else{
-		int pow = 1;
-		for (int i=0; i< n ; i++){
-			pow = times(pow, x);
+		else if (n==1){
+			return x;
 		}
-		return pow;
-}
+		else{
+		int result = x;
+		if (n> 0){
+		for (int i=1; i< n ; i++){
+			result = times(result, x);
+		}
 	}
+	return result;
+	}
+}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
 		if (x2 == 0) {
 			return -1; 
 		}
-		else if (0<=x1 && x1<x2){
-		return 0;
+		else if (x2 == x1) {
+			return 1; 
+		}
+		else if (x2 == 1) {
+			return x1; 
 		}
 
-		boolean isNegative = false;
-    if (x1 < 0 && x2 < 0) {
-        x1 = minus(0, x1); 
-        x2 = minus(0, x2);
+		int result =0;
+		int divNum =0;
 
-    } else if (x1 < 0 || x2 < 0) {
-        isNegative = true; 
-		if (x1<0){
-			x1 = minus(0, x1); 
-		}
-		else{
-			x2 = minus(0, x2);
-		}
-	}
-       
-		int count = 0; 
-		while (x1 >= x2) { 
-		x1 = minus(x1, x2);
-			count++; 
-			
+		else if (x1>=0 && x2<0){
+			while (result<x1){
+				result = plus(result, times(x2, -1));
+				if (result>1){
+					return times(divNum, -1);
+				}
+				divNum ++;
 			}
-		
-		if (isNegative == true) {
-			return minus(0, count);
-    }
-		return count; 
+		return times(divNum, -1);
+		}
 	}
+}
+
+	
+
+		
 
 
 	
@@ -207,13 +176,19 @@ public class Algebra {
 		else if(x == 0){
 			return 0;
 		}
-		else{
-			int guess = 0;
-		while (times(guess, guess)<= x){
-			guess++;
+		else if(x == 1){
+			return 1;
 		}
-        
-		return guess-1;
-	}	
+		else{
+		for (int i = 0; i < x; i++){
+		if (times(i, i)== x){
+		return i;
+		}
+		else if (times(i, i)> x){
+			return i-1;
+		
+		}
+	}	return -1;
 }  	  
+	}
 }
