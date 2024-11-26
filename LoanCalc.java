@@ -20,14 +20,14 @@ public class LoanCalc {
 		//System.out.println("If your periodical payment is " + payment + ", your ending balance is: " + (int) endBalance);
 		
 		// Computes the periodical payment using brute force search
-		System.out.print("%.2f\nPeriodical payment, using brute force: ");
+		System.out.printf("\nPeriodical payment, using brute force:  %.2f\n" );
 		System.out.println( bruteForceSolver(loan, rate, n, epsilon));
-		System.out.print("number of iterations: " + iterationCounter);
+		System.out.printf("number of iterations: " + iterationCounter);
 
 		// Computes the periodical payment using bisection search
-		System.out.print("%.2f\nPeriodical payment, using bi-section search: ");
+		System.out.printf("\nPeriodical payment, using bi-section search: %.2f\n");
 		System.out.println( bisectionSolver(loan, rate, n, epsilon));
-		System.out.print("number of iterations: " + iterationCounter);
+		System.out.printf("number of iterations: " + iterationCounter);
 	}
 
 	// Computes the ending balance of a loan, given the loan amount, the periodical
@@ -38,7 +38,7 @@ public class LoanCalc {
 			curentPayment = (curentPayment - payment ) *  ((rate/100) +1) ;
 		}
 		
-		return curentPayment;
+		return curentPayment-1;
 	}
 	
 	// Uses sequential search to compute an approximation of the periodical payment
