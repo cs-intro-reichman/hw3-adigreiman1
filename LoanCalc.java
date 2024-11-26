@@ -17,7 +17,7 @@ public class LoanCalc {
 		// Computes the ending balance of the loan, given a periodical payment
 		double payment = 10000;
 		double endBalance = endBalance(loan, rate, n, payment);
-		System.out.println("If your periodical payment is " + payment + ", your ending balance is: " + (int) endBalance);
+		//System.out.println("If your periodical payment is " + payment + ", your ending balance is: " + (int) endBalance);
 		
 		// Computes the periodical payment using brute force search
 		System.out.print("\nPeriodical payment, using brute force: ");
@@ -49,7 +49,7 @@ public class LoanCalc {
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {  
     	
 		iterationCounter=0;
-		double g = loan / n;
+		double g = loan / (double) n;
 		
 		while (endBalance(loan, rate, n, g)>0){
 			iterationCounter++;
