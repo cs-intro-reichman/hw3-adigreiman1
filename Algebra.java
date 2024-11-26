@@ -110,7 +110,7 @@ public class Algebra {
 		int result =0;
 		int divNum =0;
 
-		else if (x1>=0 && x2<0){
+		if (x1>=0 && x2<0){
 			while (result<x1){
 				result = plus(result, times(x2, -1));
 				if (result>1){
@@ -120,8 +120,25 @@ public class Algebra {
 			}
 		return times(divNum, -1);
 		}
+		if (x1<0 && x2<0){
+			while (result<times(x1, -1)){
+				result = plus(result, times(x2, -1));
+				if (result>times(x1, -1)){
+					return divNum;
+				}
+				divNum ++;
+		}
+		return divNum;
 	}
+	while (result<x1){
+		result = plus(result, x2);
+		if (result>1){
+			return divNum;
+		}
+		divNum ++;
 }
+return divNum;
+	}
 
 	
 
