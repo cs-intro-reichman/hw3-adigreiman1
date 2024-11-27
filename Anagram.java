@@ -55,7 +55,7 @@ else{
 	public static String preProcess(String str) {
 		String newStr = "";
 		for (int i =0; i<str.length();i++){
-			if (str.charAt(i)>= 97 && str.charAt(i)<=122){
+			if (str.charAt(i)>= 97 && str.charAt(i)<=122 ){
 				newStr +=str.charAt(i);
 			}
 			else if (str.charAt(i)>=65 && str.charAt(i) <=90){
