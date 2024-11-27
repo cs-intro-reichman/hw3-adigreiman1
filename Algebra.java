@@ -6,21 +6,24 @@
 public class Algebra {
 	public static void main(String args[]) {
 	    // Tests some of the operations
-	    System.out.println(plus(2,3));   // 2 + 3
-	    System.out.println(minus(7,2));  // 7 - 2
-   		System.out.println(minus(2,7));  // 2 - 7
- 		System.out.println(times(3,4));  // 3 * 4
-   		System.out.println(plus(2,times(4,2)));  // 2 + 4 * 2
-   		System.out.println(pow(5,3));      // 5^3
-   		System.out.println(pow(3,5));      // 3^5
-   		System.out.println(div(12,3));   // 12 / 3    
-   		System.out.println(div(5,5));    // 5 / 5  
-   		System.out.println(div(25,7));   // 25 / 7
-   		System.out.println(mod(25,7));   // 25 % 7
-   		System.out.println(mod(120,6));  // 120 % 6    
-   		System.out.println(sqrt(36));
-		System.out.println(sqrt(263169));
-   		System.out.println(sqrt(76123));
+	    // System.out.println(plus(-2,3));   // 2 + 3
+		// System.out.println(plus(-2,-3));   // 2 + 3
+	    // System.out.println(plus(2,-3));   // 2 + 3
+	    // System.out.println(minus(-7,-2));  // 7 - 2
+   		// System.out.println(minus(-2,7));  // 2 - 7
+ 		// System.out.println(times(-3,-4));  // 3 * 4
+		// System.out.println(times(3,-4)); 
+   		// System.out.println(plus(2,times(4,2)));  // 2 + 4 * 2
+   		// System.out.println(pow(5,3));      // 5^3
+   		// System.out.println(pow(3,5));      // 3^5
+   		// System.out.println(div(-12,3));   // 12 / 3    
+   		// System.out.println(div(5,-5));    // 5 / 5  
+   		// System.out.println(div(-25,-7));   // 25 / 7
+   		// System.out.println(mod(25,7));   // 25 % 7
+   		// System.out.println(mod(120,6));  // 120 % 6    
+   		// System.out.println(sqrt(36));
+		// System.out.println(sqrt(263169));
+   		// System.out.println(sqrt(76123));
 	}  
 
 	// Returns x1 + x2
@@ -61,18 +64,19 @@ public class Algebra {
 		if (x2==1){
 			return x1;
 		}
-		else if (x1 >=0 || x2>=0){
+		 if ((x1 >=0) && (x2>=0)){
 			for (int i=1; i< x2 ; i++){
+			
 				result = plus(result, x1);
 		}
-		return result;
 	}
 		else{
 			for (int i = x2; i <1; i++) {
 				result = minus(result, x1);
 		}
-		return result;
+		
 	}
+	return result;
 }
 
 	// Returns x^n (for n >= 0)
