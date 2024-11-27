@@ -12,23 +12,19 @@ public class LoanCalc {
 		double loan = Double.parseDouble(args[0]);
 		double rate = Double.parseDouble(args[1]);
 		int n = Integer.parseInt(args[2]);
-		System.out.println("Loan sum = " + loan + ", interest rate = " + rate + "%, periods = " + n);
+		System.out.println("Loan = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 
-		// Computes the ending balance of the loan, given a periodical payment
-		double payment = 10000;
-		double endBalance = endBalance(loan, rate, n, payment);
-		System.out.println("If your periodical payment is " + payment + ", your ending balance is: " + (int) endBalance);
-		
 		// Computes the periodical payment using brute force search
-		System.out.printf("\nPeriodical payment, using brute force: " );
-		System.out.printf("%.2f\n", bruteForceSolver(loan, rate, n, epsilon));
-		System.out.printf("number of iterations: " + iterationCounter);
+		System.out.print("\nPeriodical payment, using brute force: ");
+		System.out.println((int) bruteForceSolver(loan, rate, n, epsilon));
+		System.out.println("number of iterations: " + iterationCounter);
 
 		// Computes the periodical payment using bisection search
-		System.out.printf("\nPeriodical payment, using bi-section search: ");
-		System.out.printf("%.2f\n", bisectionSolver(loan, rate, n, epsilon));
-		System.out.printf("number of iterations: " + iterationCounter);
+		System.out.print("\nPeriodical payment, using bi-section search: ");
+		System.out.println((int) bisectionSolver(loan, rate, n, epsilon));
+		System.out.println("number of iterations: " + iterationCounter);
 	}
+
 
 	// Computes the ending balance of a loan, given the loan amount, the periodical
 	// interest rate (as a percentage), the number of periods (n), and the periodical payment.
@@ -71,16 +67,16 @@ public class LoanCalc {
 		double L= loan/(double) n;
 		double H= loan*2;
 
-		double g = (L+H)/2;
+		double g = (L+H)/2.0;
 
 		while ((H-L)>epsilon){
-			if (endBalance(loan, rate, n, g)* endBalance(loan, rate, n, L)>0){
+			if ((endBalance(loan, rate, n, g)* endBalance(loan, rate, n, L))>0){
 				L=g;
 			}
 			else{
 				H=g;
 			}
-			g=(L+H)/2;
+			g=(L+H)/2.0;
 			iterationCounter++;
 		}
 
