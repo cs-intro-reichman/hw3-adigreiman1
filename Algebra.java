@@ -114,7 +114,7 @@ public class Algebra {
 		int result =0;
 		int divNum =0;
 
-		if (x1>=0 && x2<0){
+		if ((x1>=0) && (x2<0)){
 			while (result<x1){
 				result = plus(result, times(x2, -1));
 				if (result>x1){
@@ -125,7 +125,7 @@ public class Algebra {
 		return times(divNum, -1);
 		}
 
-		if (x1<0 && x2>=0){
+		if ((x1<0) && (x2>=0)){
 			while (result<times(x1, -1)){
 				result = plus(result, x2);
 				if (result>times(x1, -1)){
@@ -135,7 +135,7 @@ public class Algebra {
 		}
 		return times(divNum, -1);
 	}
-	if (x1<0 && x2<0){
+	if ((x1<0) && (x2<0)){
 		while (result < times(x1, -1)){
 			result = plus(result, times(x2, -1));
 			if (result > times(x1, -1)){
@@ -169,11 +169,11 @@ return divNum;
 		else{
 			boolean isNegative = false;
 
-			if (x1 < 0 && x2 < 0) {
+			if ((x1 < 0) && (x2 < 0)) {
 				x1 = minus(0, x1); 
 				x2 = minus(0, x2);
 
-			} else if (x1 < 0 || x2 < 0) {
+			} else if ((x1 < 0) || (x2 < 0)) {
 				isNegative = true;
 				if (x1 < 0) {
 					x1 = minus(0, x1);
