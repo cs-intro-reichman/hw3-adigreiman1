@@ -55,7 +55,7 @@ else{
 	public static String preProcess(String str) {
 		String newStr = "";
 		for (int i =0; i<str.length();i++){
-			if (str.charAt(i)>= 97 && str.charAt(i)<=122 ){
+			if (str.charAt(i)>= 97 && str.charAt(i)<=122 || str.charAt(i) == 32){
 				newStr +=str.charAt(i);
 			}
 			else if (str.charAt(i)>=65 && str.charAt(i) <=90){
@@ -68,12 +68,13 @@ else{
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
-		String newStr= "";
-		for (int i =0; i<str.length();i++){
-			char chosenChar = str.charAt((int) (Math.random() * str.length()));
-			newStr += chosenChar;
-			str = str.substring(0,i)+ str.substring(i+1);
+		String newStr= preProcess(str);
+			String random = "";
+		while (newStr.length()>0){
+			int randomIndex = str.charAt((int) (Math.random() * str.length()));
+			random += newStr.charAt(randomIndex);
+			newStr = str.substring(0,randomIndex)+ str.substring(randomIndex+1);
 		}
-		return newStr;
+		return random;
 	}
 }
