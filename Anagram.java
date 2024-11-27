@@ -55,15 +55,16 @@ else{
 	public static String preProcess(String str) {
 		String newStr = "";
 		for (int i =0; i<str.length();i++){
+			char curentChar= str.charAt(i);
 			if (str.charAt(i)>= 97 && str.charAt(i)<=122 ){
-				newStr +=str.charAt(i);
+				newStr += curentChar;
 			}
-			else if (str.charAt(i)>=65 && str.charAt(i) <=90){
-				newStr += (char) (str.charAt(i)+32);
+			else if ((curentChar>=65) && (curentChar <=90)){
+				newStr += (char) (curentChar+32);
 			}
-			else if (str.charAt(i) == 32){
-				newStr +=str.charAt(i);
-			}
+			//else if (curentChar == 32){
+			//	newStr +=str.charAt(i);
+			//}
 		}
 		return newStr;
 	} 
