@@ -58,11 +58,11 @@ public class Algebra {
 	public static int times(int x1, int x2) {
 		int result = x1;
 
-		if (x1==0 || x2==0){
-			return 0;
+		if (x2==1){
+			return x1;
 		}
-		else if (x1 >0 || x2>0){
-			for (int i=0; i< x2 ; i++){
+		else if (x1 >=0 || x2>=0){
+			for (int i=1; i< x2 ; i++){
 				result = plus(result, x1);
 		}
 		return result;
@@ -113,37 +113,45 @@ public class Algebra {
 		if (x1>=0 && x2<0){
 			while (result<x1){
 				result = plus(result, times(x2, -1));
-				if (result>1){
+				if (result>x1){
 					return times(divNum, -1);
 				}
 				divNum ++;
 			}
 		return times(divNum, -1);
 		}
-		if (x1<0 && x2<0){
+
+		if (x1<0 && x2>=0){
 			while (result<times(x1, -1)){
-				result = plus(result, times(x2, -1));
+				result = plus(result, x2);
 				if (result>times(x1, -1)){
-					return divNum;
+					return times(divNum, -1);
 				}
 				divNum ++;
 		}
-		return divNum;
+		return times(divNum, -1);
 	}
+	if (x1<0 && x2<0){
+		while (result < times(x1, -1)){
+			result = plus(result, times(x2, -1));
+			if (result > times(x1, -1)){
+				return divNum;
+			}
+			divNum++;
+		}
+		return divNum;
+
+	}
+
 	while (result<x1){
 		result = plus(result, x2);
-		if (result>1){
+		if (result>x1){
 			return divNum;
 		}
 		divNum ++;
 }
 return divNum;
 	}
-
-	
-
-		
-
 
 	
 	// Returns x1 % x2
