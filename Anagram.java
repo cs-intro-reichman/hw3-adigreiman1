@@ -35,29 +35,27 @@ public class Anagram {
 	if (newStr1.length() != newStr2.length()) {
         return false;
     }
-
+else{
 	for (int i =0; i<newStr1.length();i++){
-		boolean isCharExist = false;
-		for ( int j=0; j<newStr2.length();j++){
-			if(newStr1.charAt(i)==newStr2.charAt(j)){
-				isCharExist = true;
-				newStr2 = newStr2.substring(0, j) + newStr2.substring(j+1) ;
-			}
-		}
-		if (isCharExist ==false){
-			return false;
-		}
-	}
-	return true;
-	}
-	   
+		char currentChar = newStr1.charAt(i);
+        int indexNewStr2 = newStr2.indexOf(currentChar);
+
+        if (indexNewStr2 == -1) {
+            return false;
+        }
+        newStr2 = newStr2.substring(0, indexNewStr2) + newStr2.substring(indexNewStr2 + 1);
+    }
+
+    return true;
+}
+	}	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
 		String newStr = "";
 		for (int i =0; i<str.length();i++){
-			if (str.charAt(i)>= 97 && str.charAt(i)<=122 && str.charAt(i)== 32){
+			if (str.charAt(i)>= 97 && str.charAt(i)<=122){
 				newStr +=str.charAt(i);
 			}
 			else if (str.charAt(i)>=65 && str.charAt(i) <=90){
@@ -70,7 +68,12 @@ public class Anagram {
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
-		// Replace the following statement with your code
-		return str;
+		String newStr= "";
+		for (int i =0; i<str.length();i++){
+			char chosenChar = str.charAt((int) (Math.random() * str.length()));
+			newStr += chosenChar;
+			str = str.substring(0,i)+ str.substring(i+1);
+		}
+		return newStr;
 	}
 }
