@@ -55,11 +55,14 @@ else{
 	public static String preProcess(String str) {
 		String newStr = "";
 		for (int i =0; i<str.length();i++){
-			if (str.charAt(i)>= 97 && str.charAt(i)<=122 || str.charAt(i) == 32){
+			if (str.charAt(i)>= 97 && str.charAt(i)<=122 ){
 				newStr +=str.charAt(i);
 			}
 			else if (str.charAt(i)>=65 && str.charAt(i) <=90){
 				newStr += (char) (str.charAt(i)+32);
+			}
+			else if (str.charAt(i) == 32){
+				newStr +=str.charAt(i);
 			}
 		}
 		return newStr;
@@ -71,9 +74,9 @@ else{
 		String newStr= preProcess(str);
 			String random = "";
 		while (newStr.length()>0){
-			int randomIndex = str.charAt((int) (Math.random() * str.length()));
+			int randomIndex = (int) (Math.random() * newStr.length());
 			random += newStr.charAt(randomIndex);
-			newStr = str.substring(0,randomIndex)+ str.substring(randomIndex+1);
+			newStr = newStr.substring(0,randomIndex)+ newStr.substring(randomIndex+1);
 		}
 		return random;
 	}
