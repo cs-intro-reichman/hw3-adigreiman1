@@ -59,25 +59,34 @@ public class Algebra {
 	
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-		int result = x1;
+		if (x1 == 0 || x2 == 0) {
+			return 0;
+		}
+		int result = 0; 
+		boolean isNegative = false;
+	
+		if (x1 < 0 && x2 > 0) {
+			x1 = minus(0, x1);
+			isNegative = true;
 
-		if (x2==1){
-			return x1;
+		} else if (x1 > 0 && x2 < 0) {
+			x2 = minus(0, x2);
+			isNegative = true;
+
+		} else if (x1 < 0 && x2 < 0) {
+			x1 = minus(0, x1);
+			x2 = minus(0, x2);
 		}
-		 if ((x1 >=0) && (x2>=0)){
-			for (int i=1; i< x2 ; i++){
-			
-				result = plus(result, x1);
+	
+		for (int i = 0; i < x2; i++) {
+			result = plus(result, x1);
 		}
+	if (isNegative){
+		return minus(0, result);
 	}
-		else{
-			for (int i = x2; i <1; i++) {
-				result = minus(result, x1);
-		}
-		
+		return result;
 	}
-	return result;
-}
+	
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
