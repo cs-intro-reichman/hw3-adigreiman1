@@ -62,9 +62,9 @@ else{
 			else if ((curentChar>=65) && (curentChar <=90)){
 				newStr += (char) (curentChar+32);
 			}
-			//else if (curentChar == 32){
-			//	newStr +=str.charAt(i);
-			//}
+			else if (curentChar == 32){
+				newStr +=curentChar;
+			}
 		}
 		return newStr;
 	} 
