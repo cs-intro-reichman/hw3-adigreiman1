@@ -31,16 +31,16 @@ public class Anagram {
 	public static boolean isAnagram(String str1, String str2) {
 	String newStr1 = preProcess(str1);
 	String newStr2 = preProcess(str2);
-
-	if (newStr1.length() != newStr2.length()) {
-        return false;
-    }
-else{
+	
+	// if (newStr1.length() != newStr2.length()) {
+    //     return false;
+    // }
+// else{
 	for (int i =0; i<newStr1.length();i++){
 		char currentChar = newStr1.charAt(i);
         int indexNewStr2 = newStr2.indexOf(currentChar);
 
-        if (indexNewStr2 == -1) {
+        if ((indexNewStr2 == -1)) {
             return false;
         }
         newStr2 = newStr2.substring(0, indexNewStr2) + newStr2.substring(indexNewStr2 + 1);
@@ -48,7 +48,7 @@ else{
 
     return true;
 }
-	}	   
+	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
@@ -56,15 +56,15 @@ else{
 		String newStr = "";
 		for (int i =0; i<str.length();i++){
 			char curentChar= str.charAt(i);
-			if (str.charAt(i)>= 97 && str.charAt(i)<=122 ){
+			if (curentChar>= 97 && curentChar<=122 ){
 				newStr += curentChar;
 			}
 			else if ((curentChar>=65) && (curentChar <=90)){
 				newStr += (char) (curentChar+32);
+			} else if (curentChar == 32) {
+				newStr += curentChar;
 			}
-			else if (curentChar == 32){
-				newStr +=curentChar;
-			}
+		
 		}
 		return newStr;
 	} 
