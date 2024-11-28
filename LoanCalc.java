@@ -65,7 +65,7 @@ public class LoanCalc {
      
 		iterationCounter =0;
 		double L= loan/(double) n;
-		double H= loan*2;
+		double H= loan;
 
 		double g = (L+H)/2.0;
 
