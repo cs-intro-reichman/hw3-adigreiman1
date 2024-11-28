@@ -16,12 +16,12 @@ public class LoanCalc {
 
 		// Computes the periodical payment using brute force search
 		System.out.print("\nPeriodical payment, using brute force: ");
-		System.out.printf("%.2f\n", bruteForceSolver(loan, rate, n, epsilon));
+		System.out.println(String.format("%.2f", bruteForceSolver(loan, rate, n, epsilon)));
 		System.out.println("number of iterations: " + iterationCounter);
 
 		// Computes the periodical payment using bisection search
 		System.out.print("\nPeriodical payment, using bi-section search: ");
-		System.out.printf("%.2f\n", bisectionSolver(loan, rate, n, epsilon));
+		System.out.println(String.format("%.2f", bisectionSolver(loan, rate, n, epsilon)));
 		System.out.println("number of iterations: " + iterationCounter);
 	}
 
